@@ -47,5 +47,5 @@ def status():
     c = conn.cursor()
     c.execute('SELECT Nature, COUNT(*) FROM Incidents GROUP BY Nature')
     for row in c.fetchall():
-        print(row[0],"|",row[1])
+        print(f"{row[0]}|{row[1]}")
     conn.close()
