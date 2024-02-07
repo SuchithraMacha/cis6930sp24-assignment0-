@@ -1,6 +1,7 @@
 import requests
 import sqlite3
 import re
+import os
 
 
 # Function to download PDF file given a URL
@@ -19,7 +20,13 @@ def extract_fields(line):
 
 # Function to create SQLite database and table
 def create_database():
-    conn = sqlite3.connect('resources/normanpd.db')
+    directory = 'resources'
+
+    if not os.path.exists(directory):
+        os.mkdir(directory)
+
+    db_file = os.path.abspath(os.path.join(directory, 'normanpd.db'))
+    conn = sqlite3.connect(db_file)
     c = conn.cursor()
     c.execute('''CREATE TABLE IF NOT EXISTS Incidents
                  (Date_Time TEXT, Incident_Number TEXT, Location TEXT, Nature TEXT, Incident_ORI TEXT)''')

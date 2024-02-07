@@ -1,55 +1,53 @@
-# CIS6930SP24 - ASSIGNMENT 0 - NORMANPD PROJECT
+# Cis6930sp24 - Assignment 0 - Normanpd Project
 
-## PROJECT DESCRIPTION
-THIS PYTHON PROJECT FOCUSES ON EXTRACTING INCIDENT DATA FROM THE NORMAN, OKLAHOMA POLICE 
-DEPARTMENT'S PDF SUMMARIES, STORING IT IN AN SQLITE DATABASE, AND PROVIDING A SUMMARY OF 
-INCIDENT COUNTS. THE CODE IS ORGANIZED AS A SINGLE PYTHON FILE WITH FUNCTIONS FOR DOWNLOADING, 
-EXTRACTING, AND WORKING WITH THE DATA.
+## Project Description
+This Python Project Focuses On Extracting Incident Data From The Norman, Oklahoma Police 
+Department's Pdf Summaries, Storing It In An Sqlite Database, And Providing A Summary Of 
+Incident Counts. The Code Is Organized As A Single Python File With Functions For Downloading, 
+Extracting, And Working With The Data.
 
-##HOW TO RUN
-PIPENV RUN PYTHON EXTRACTOR.PY --INCIDENTS <URL>
-
-##FUNCTIONS
-#DOWNLOAD PDF 
-DOWNLOADS A PDF FILE CONTAINING INCIDENT DATA FROM A SPECIFIED URL.
-
-#EXTRACT FIELDS 
-EXTRACTS RELEVANT FIELDS FROM THE PDF TEXT USING REGULAR EXPRESSIONS.
-
-#CREATE DATABASE 
-CREATES A SQLITE DATABASE AND TABLE TO STORE THE EXTRACTED INCIDENT DATA.
-
-#INSERT INTO DATABASE 
-INSERTS THE EXTRACTED DATA INTO THE SQLITE DATABASE.
-
-#PRINT STATUS 
-PRINTS THE COUNT OF EACH NATURE OF INCIDENT STORED IN THE DATABASE.
+## how To Run
+Pipenv Run Python Assignment0/main.py --incidents <url>
 
 
+## Functions
+# Download Pdf 
+Downloads A Pdf File Containing Incident Data From A Specified Url.
 
-## TESTS
-##HOW TO RUN TESTS
-PYTHON -M UNITTEST -V TESTS
+# Extract Fields 
+Extracts Relevant Fields From The Pdf Text Using Regular Expressions.
 
-#TEST DOWNLOAD PDF 
-VERIFIES THAT THE DOWNLOAD_PDF FUNCTION CORRECTLY DOWNLOADS AND SAVES A PDF FILE.
+# Create Database 
+Creates A Sqlite Database And Table To Store The Extracted Incident Data.
 
-#TEST EXTRACT FIELDS 
-VALIDATES THE EXTRACT_FIELDS FUNCTION'S ABILITY TO EXTRACT FIELDS FROM A GIVEN LINE OF TEXT.
+# Insert Into Database 
+Inserts The Extracted Data Into The Sqlite Database.
 
-#TEST CREATE DATABASE 
-ENSURES THAT THE CREATE_DATABASE FUNCTION CORRECTLY CREATES A SQLITE DATABASE AND TABLE.
+# Print Status 
+Prints The Count Of Each Nature Of Incident Stored In The Database.
 
-#TEST INSERT INTO DATABASE
-CHECKS THAT THE INSERT_INTO_DATABASE FUNCTION PROPERLY INSERTS DATA INTO THE SQLITE DATABASE.
 
-#TEST STATUS
-VERIFIES THAT THE STATUS FUNCTION CORRECTLY PRINTS THE COUNT OF EACH INCIDENT NATURE STORED 
-IN THE DATABASE.
 
-###NOTE
-IN THE TEST_DOWNLOAD_PDF METHOD, WE MOCK REQUESTS.GET AND OPEN TO AVOID ACTUAL NETWORK REQUESTS 
-AND FILE OPERATIONS. THEN, WE ASSERT THAT THE FUNCTIONS ARE CALLED CORRECTLY.
+## Tests
+## How To Run Tests
+Pipenv Run Python -m Pytest
 
-IN THE OTHER TEST METHODS, WE MOCK SQLITE3.CONNECT AND CURSOR TO AVOID ACTUAL DATABASE OPERATIONS. 
-WE ALSO MOCK SYS.STDOUT TO CAPTURE THE OUTPUT OF THE STATUS FUNCTION.
+# Test Download Pdf 
+Verifies That The Download_pdf Function Correctly Downloads And Saves A Pdf File.
+
+# Test Extract Fields 
+Validates The Extract_fields Function's Ability To Extract Fields From A Given Line Of Text.
+
+# Test Insert Into Database
+Checks That The Insert_into_database Function Properly Inserts Data Into The Sqlite Database.
+
+# Test Status
+Verifies That The Status Function Correctly Prints The Count Of Each Incident Nature Stored 
+In The Database.
+
+### Note
+In The Test_download_pdf Method, We Mock Requests.get And Open To Avoid Actual Network Requests 
+And File Operations. Then, We Assert That The Functions Are Called Correctly.
+
+In The Other Test Methods, We Mock Sqlite3.connect And Cursor To Avoid Actual Database Operations. 
+We Also Mock Sys.stdout To Capture The Output Of The Status Function.
