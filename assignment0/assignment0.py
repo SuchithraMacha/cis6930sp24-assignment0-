@@ -19,7 +19,7 @@ def extract_fields(line):
 
 # Function to create SQLite database and table
 def create_database():
-    conn = sqlite3.connect('normanpd.db')
+    conn = sqlite3.connect('resources/normanpd.db')
     c = conn.cursor()
     c.execute('''CREATE TABLE IF NOT EXISTS Incidents
                  (Date_Time TEXT, Incident_Number TEXT, Location TEXT, Nature TEXT, Incident_ORI TEXT)''')
@@ -28,7 +28,7 @@ def create_database():
 
 # Function to insert data into SQLite database
 def insert_into_database(data):
-    conn = sqlite3.connect('normanpd.db')
+    conn = sqlite3.connect('resources/normanpd.db')
     c = conn.cursor()
     c.executemany('INSERT INTO Incidents VALUES (?, ?, ?, ?, ?)', data)
     conn.commit()
@@ -36,7 +36,7 @@ def insert_into_database(data):
 
 # Function to print each nature and the number of times it appears
 def status():
-    conn = sqlite3.connect('normanpd.db')
+    conn = sqlite3.connect('resources/normanpd.db')
     c = conn.cursor()
     c.execute('SELECT Nature, COUNT(*) FROM Incidents GROUP BY Nature')
     for row in c.fetchall():
