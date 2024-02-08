@@ -12,11 +12,13 @@ def download_pdf(url, filename):
 
 # Function to extract fields from incident data
 def extract_fields(line):
-    pattern = r'(\d+/\d+/\d+ \d+:\d+) (\d+-\d+) (.+) (.+) ([A-Z0-9]+)'
+    pattern = r'(\d+/\d+/\d+\s\d+:\d+) (\d+-\d+) ((?:\d+\s)?(?:[A-Z]\s)?[A-Z][A-Za-z\s]*?(?=\s[A-Z][a-z])) ((?:[A-Za-z]+(?:\s[A-Za-z]+)*\s?)+) ([A-Z0-9]+)'
+
     match = re.match(pattern, line)
     if match:
         return match.groups()
     return None
+
 
 # Function to create SQLite database and table
 def create_database():
@@ -35,11 +37,15 @@ def create_database():
 
 # Function to insert data into SQLite database
 def insert_into_database(data):
-    conn = sqlite3.connect('resources/normanpd.db')
+    directory = 'resources'
+    db_file = os.path.abspath(os.path.join(directory, 'normanpd.db'))
+
+    conn = sqlite3.connect(db_file)
     c = conn.cursor()
     c.executemany('INSERT INTO Incidents VALUES (?, ?, ?, ?, ?)', data)
     conn.commit()
     conn.close()
+
 
 # Function to print each nature and the number of times it appears
 def status():

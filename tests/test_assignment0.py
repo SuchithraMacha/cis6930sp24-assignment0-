@@ -46,4 +46,4 @@ def test_status(mock_stdout):
 
         mock_cursor.execute.assert_called_once_with('SELECT Nature, COUNT(*) FROM Incidents GROUP BY Nature')
         output = mock_stdout.getvalue().strip()
-        assert output == "Nature | 1"
+        assert output == "Nature|1"
