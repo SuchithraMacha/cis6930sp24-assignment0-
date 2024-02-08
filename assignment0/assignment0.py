@@ -12,27 +12,12 @@ def download_pdf(url, filename):
 
 # Function to extract fields from incident data
 def extract_fields(line):
-    fields = line.strip().split(' ')
-    if len(fields) < 5:
-        return None
-    
-    # Extract Date/Time
-    date_time = fields[0] + ' ' + fields[1]
-    
-    # Extract Incident Number
-    incident_number = fields[2]
-    
-    # Extract Location
-    location = ' '.join(fields[3:-2])
-    
-    # Extract Nature
-    nature = fields[-2]
-    
-    # Extract Incident ORI
-    incident_ori = fields[-1]
-    
-    return (date_time, incident_number, location, nature, incident_ori)
+    pattern = r'(\d+/\d+/\d+\s\d+:\d+)\s(\d+-\d+)\s((?:\d+\s)?(?:[A-Z]\s)?[A-Z][A-Za-z\s]*?(?=\s[A-Z][a-z]))\s((?:[A-Za-z]+(?:\s[A-Za-z]+)*\s?)+)\s([A-Z0-9]+)'
 
+    match = re.match(pattern, line)
+    if match:
+        return match.groups()
+    return None
 
 
 # Function to create SQLite database and table

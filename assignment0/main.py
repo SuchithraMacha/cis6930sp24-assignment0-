@@ -47,7 +47,6 @@ def main():
 
     # Print nature count
     status()
-    #print_all()
 
 if __name__ == "__main__":
     main()
